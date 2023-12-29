@@ -1,31 +1,31 @@
-const pxAccordion = (elementSelector) => {
+const pxAccordion = (elementSelector, defaultOpen) => {
   const selectedElements = document.querySelectorAll(elementSelector);
-  selectedElements.forEach((item) => {
-    pxAccordionInit(item);
+  selectedElements.forEach( function(item) {
+    pxAccordionInit(item, defaultOpen);
   });
 };
-const pxAccordionInit = (element) => {
+function pxAccordionInit(element, defaultOpen) {
   const selectedElement = element;
   const accHeads = selectedElement.querySelectorAll(
     ".px-acc-item .px-acc-head"
   );
   accHeads.forEach((headItem) => {
-    headItem.addEventListener("click", () => {
+    headItem.addEventListener("click", function() {
       const accItem = headItem.parentElement;
       const accBody = headItem.nextElementSibling;
       let accBodyHeight = accBody.scrollHeight;
 
-      accBody.addEventListener("transitionend", () => {
+      accBody.addEventListener("transitionend", function() {
         if (accItem.classList.contains("active")) accBody.style.height = "auto";
       });
       accItem.classList.toggle("active");
       if (accItem.classList.contains("active")) {
         accBody.style.height = accBodyHeight + "px";
       } else {
-        requestAnimationFrame(() => {
+        requestAnimationFrame(function() {
           accBodyHeight = accBody.scrollHeight;
           accBody.style.height = accBodyHeight + "px";
-          requestAnimationFrame(() => {
+          requestAnimationFrame(function() {
             accBody.style.height = 0 + "px";
           });
         });
@@ -38,5 +38,6 @@ const pxAccordionInit = (element) => {
       }
     });
   });
+  accHeads[defaultOpen].click();
 };
-pxAccordion("#faqacc");
+pxAccordion("#faqacc", 0);
