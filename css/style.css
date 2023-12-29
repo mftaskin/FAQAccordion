@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap');
+
+:root {
+  --color-lightpink: hsl(275, 100%, 97%);
+  --color-pink: hsl(281, 83%, 54%);
+  --color-grayishpurple: hsl(292, 16%, 49%);
+  --color-darkpurple: hsl(292, 42%, 14%);
+  --color-white: hsl(0, 0%, 100%);
+
+  --fontfamily-worksans: 'Work Sans', serif;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+img, svg {
+    vertical-align: middle;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--fontfamily-worksans);
+  font-size: 1rem;
+  line-height: 1.4;
+  width:100%;
+  min-height:100vh;
+  background-color: var(--color-lightpink);
+  background-image:url('../assets/images/background-pattern-desktop.svg');
+  background-repeat: repeat-x;
+  background-position: 0% 0%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#faqbox {
+  width: 90%;
+  max-width: 600px;
+  margin-top: 168px;
+  margin-bottom: 3rem;
+  padding: 2.5rem;
+  border-radius: 0.875rem;
+  background-color: var(--color-white);
+  box-shadow: 0px 0px 24px 0px rgba(34, 21, 36, 0.2);
+}
+#faqbox-header {
+  width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#faqbox-header img {
+  width: 38px;
+  margin-right: 1.5rem;
+}
+#faqbox-header h1 {
+  color: var(--color-darkpurple);
+  font-size: 3.5rem;
+  line-height: 1.2;
+}
+
+#faqacc {
+  width: 100%;
+}
+.faqacc-item {
+  width: 100%;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-lightpink);
+}
+.faqacc-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.faqacc-head {
+  color: var(--color-darkpurple);
+  font-size: 1.125rem;
+  font-weight: 600;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+.faqacc-head:hover,
+.faqacc-head:focus {
+  color: var(--color-pink);
+}
+.faqacc-icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--color-pink);
+  display: inline-block;
+  flex: 0 0 24px;
+  transition: transform 300ms ease;
+}
+.faqacc-icon span {
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-white);
+  transform: translate(-50%, -50%);
+  display: block;
+  transition: transform 300ms ease;
+}
+.faqacc-icon span:last-child {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.faqacc-item.active .faqacc-icon {
+  background-color: var(--color-darkpurple);
+  transform: rotate(90deg);
+}
+.faqacc-item.active .faqacc-icon span:first-child {
+  transform: translate(-50%, -50%) scaleX(0);
+}
+.faqacc-body,
+.faqacc-content {
+  width: 100%;
+}
+.faqacc-body {
+  height: 0;
+  overflow: hidden;
+  transition: height 150ms ease;
+}
+.faqacc-content {
+  color: var(--color-grayishpurple);
+  line-height: 1.5;
+  font-weight: 400;
+  margin-top: 1.75rem;
+}
+
+@media screen and (max-width: 678px) {
+  .productcard {
+    flex-direction: column;
+  }
+  .productcard-col {
+    width: 100%;
+  }
+  .product-img {
+    height: 240px;
+  }
+}
